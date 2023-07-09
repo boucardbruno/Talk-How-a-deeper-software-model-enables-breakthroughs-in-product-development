@@ -4,7 +4,7 @@ using Value;
 
 namespace SeatsSuggestions;
 
-public class Row : ValueType<Row>
+public class Row: ValueType<Row>
 {
     public Row(string name, List<Seat> seats)
     {

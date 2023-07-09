@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Value;
+using Value; 
 
 namespace SeatsSuggestions;
 
@@ -47,7 +47,7 @@ public class Seat : ValueType<Seat>
     {
         return RowName == seat.RowName && Number == seat.Number;
     }
-
+    
     protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()
     {
         return new object[] { RowName, Number, PricingCategory, SeatAvailability };
