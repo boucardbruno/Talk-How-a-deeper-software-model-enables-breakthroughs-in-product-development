@@ -6,7 +6,7 @@ namespace SeatsSuggestions;
 
 public class AuditoriumSeating : ValueType<AuditoriumSeating>
 {
-    private readonly Dictionary<string, Row> _rows;
+    private Dictionary<string, Row> _rows;
 
     public AuditoriumSeating(Dictionary<string, Row> rows)
     {
@@ -51,6 +51,8 @@ public class AuditoriumSeating : ValueType<AuditoriumSeating>
             newVersionOfRows[updatedSeat.RowName] = newVersionOfRow;
         }
 
-        return new AuditoriumSeating(newVersionOfRows);
+        _rows = newVersionOfRows;
+
+        return this;
     }
 }
