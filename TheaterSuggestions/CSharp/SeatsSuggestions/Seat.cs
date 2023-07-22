@@ -5,7 +5,7 @@ namespace SeatsSuggestions;
 
 public class Seat : ValueType<Seat>
 {
-    public Seat(string rowName, uint number, PricingCategory pricingCategory, SeatAvailability seatAvailability)
+    public Seat(string rowName, int number, PricingCategory pricingCategory, SeatAvailability seatAvailability)
     {
         RowName = rowName;
         Number = number;
@@ -14,7 +14,7 @@ public class Seat : ValueType<Seat>
     }
 
     public string RowName { get; init; }
-    public uint Number { get; init; }
+    public int Number { get; init; }
     public PricingCategory PricingCategory { get; init; }
     public SeatAvailability SeatAvailability { get; init; }
 
