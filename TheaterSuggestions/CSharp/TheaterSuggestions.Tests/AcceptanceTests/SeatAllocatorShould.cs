@@ -64,7 +64,7 @@ public class SeatAllocatorShould
         //  D: 2   2   2   2   2   2   2   2   2   2
         //  E: 3   3   3   3   3   3   3   3   3   3
         //  F: 3   3   3   3   3   3   3   3   3   3
-        const string eventId = "18";
+        const string showId = "18";
         const int partyRequested = 1;
 
         var auditoriumLayoutAdapter =
@@ -72,7 +72,7 @@ public class SeatAllocatorShould
 
         var seatAllocator = new SeatAllocator(auditoriumLayoutAdapter);
 
-        var suggestionsMade = seatAllocator.MakeSuggestions(eventId, partyRequested);
+        var suggestionsMade = seatAllocator.MakeSuggestions(showId, partyRequested);
 
         Check.That(suggestionsMade.SeatNames(PricingCategory.First)).ContainsExactly("A3", "A4", "A5");
         Check.That(suggestionsMade.SeatNames(PricingCategory.Second)).ContainsExactly("A1", "A2", "A9");
