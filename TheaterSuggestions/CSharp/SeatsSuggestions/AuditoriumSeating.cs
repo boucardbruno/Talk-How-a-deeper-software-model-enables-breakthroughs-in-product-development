@@ -30,9 +30,7 @@ public class AuditoriumSeating : ValueType<AuditoriumSeating>
     public AuditoriumSeating Allocate(SeatingOptionSuggested seatingOptionSuggested)
     {
         // Update the seat references in the Auditorium
-        var newAuditorium = AllocateSeats(seatingOptionSuggested.Seats);
-
-        return newAuditorium;
+        return AllocateSeats(seatingOptionSuggested.Seats);
     }
 
     protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()
