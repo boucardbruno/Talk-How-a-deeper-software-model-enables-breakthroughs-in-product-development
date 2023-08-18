@@ -4,7 +4,7 @@ using Value;
 
 namespace SeatsSuggestions;
 
-public class Row: ValueType<Row>
+public class Row : ValueType<Row>
 {
     public Row(string name, List<Seat> seats)
     {
@@ -36,7 +36,7 @@ public class Row: ValueType<Row>
 
     private IEnumerable<Seat> SelectAvailableSeatsCompliantWith(PricingCategory pricingCategory)
     {
-        return Seats.Where(s => s.IsAvailable() && s.MatchCategory(pricingCategory));
+        return Seats.Where(s => s.IsAvailable() && s.PricingCategory == pricingCategory);
     }
 
     public Row Allocate(Seat seat)
