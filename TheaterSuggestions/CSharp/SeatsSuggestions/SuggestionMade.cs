@@ -8,7 +8,7 @@ namespace SeatsSuggestions;
 /// </summary>
 public class SuggestionMade
 {
-    private readonly List<Seat> _suggestedSeats;
+    private readonly List<SeatingPlace> _suggestedSeats;
 
     public SuggestionMade(SeatingOptionSuggested seatingOptionSuggested)
     {
@@ -20,7 +20,7 @@ public class SuggestionMade
     public int PartyRequested { get; }
     public PricingCategory PricingCategory { get; }
 
-    public IReadOnlyList<Seat> SuggestedSeats => _suggestedSeats;
+    public IReadOnlyList<SeatingPlace> SuggestedSeats => _suggestedSeats;
 
     public IEnumerable<string> SeatNames()
     {

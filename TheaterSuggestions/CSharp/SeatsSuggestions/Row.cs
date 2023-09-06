@@ -6,18 +6,18 @@ namespace SeatsSuggestions;
 
 public class Row : ValueType<Row>
 {
-    public Row(string name, List<Seat> seats)
+    public Row(string name, List<SeatingPlace> seats)
     {
         Name = name;
         Seats = seats;
     }
 
     public string Name { get; init; }
-    public List<Seat> Seats { get; init; }
+    public List<SeatingPlace> Seats { get; init; }
 
-    public Row AddSeat(Seat seat)
+    public Row AddSeat(SeatingPlace seatingPlace)
     {
-        return new Row(Name, new List<Seat>(Seats) { seat });
+        return new Row(Name, new List<SeatingPlace>(Seats) { seatingPlace });
     }
 
     public SeatingOptionSuggested SuggestSeatingOption(SuggestionRequest suggestionRequest)
@@ -34,27 +34,27 @@ public class Row : ValueType<Row>
         return new SeatingOptionNotAvailable(suggestionRequest);
     }
 
-    private IEnumerable<Seat> SelectAvailableSeatsCompliantWith(PricingCategory pricingCategory)
+    private IEnumerable<SeatingPlace> SelectAvailableSeatsCompliantWith(PricingCategory pricingCategory)
     {
         return Seats.Where(s => s.IsAvailable() && s.PricingCategory == pricingCategory);
     }
 
-    public Row Allocate(Seat seat)
+    public Row Allocate(SeatingPlace seatingPlace)
     {
-        var newVersionOfSeats = new List<Seat>();
+        var newVersionOfSeats = new List<SeatingPlace>();
 
         foreach (var currentSeat in Seats)
-            if (currentSeat.SameSeatLocation(seat))
-                newVersionOfSeats.Add(new Seat(seat.RowName, seat.Number, seat.PricingCategory,
+            if (currentSeat.SameSeatLocation(seatingPlace))
+                newVersionOfSeats.Add(new SeatingPlace(seatingPlace.RowName, seatingPlace.Number, seatingPlace.PricingCategory,
                     SeatAvailability.Allocated));
             else
                 newVersionOfSeats.Add(currentSeat);
 
-        return new Row(seat.RowName, newVersionOfSeats);
+        return new Row(seatingPlace.RowName, newVersionOfSeats);
     }
 
     protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()
     {
-        return new object[] { Name, new ListByValue<Seat>(Seats) };
+        return new object[] { Name, new ListByValue<SeatingPlace>(Seats) };
     }
 }

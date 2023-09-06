@@ -31,7 +31,7 @@ public class AuditoriumSeatingAdapter
 
         foreach (var rowDto in auditoriumDto.Rows)
         {
-            var seats = new List<Seat>();
+            var seats = new List<SeatingPlace>();
 
             foreach (var seatDto in rowDto.Value)
             {
@@ -41,7 +41,7 @@ public class AuditoriumSeatingAdapter
 
                 var isReserved = reservedSeatsDto.ReservedSeats.Contains(seatDto.Name);
 
-                seats.Add(new Seat(rowName, number, pricingCategory,
+                seats.Add(new SeatingPlace(rowName, number, pricingCategory,
                     isReserved ? SeatAvailability.Reserved : SeatAvailability.Available));
             }
 

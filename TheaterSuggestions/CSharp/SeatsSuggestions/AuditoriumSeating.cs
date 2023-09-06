@@ -32,7 +32,7 @@ public class AuditoriumSeating : ValueType<AuditoriumSeating>
         // Update the seat references in the Auditorium
         var newVersionOfRows = new Dictionary<string, Row>(_rows);
 
-        foreach (var updatedSeat in (IEnumerable<Seat>)seatingOptionSuggested.Seats)
+        foreach (var updatedSeat in (IEnumerable<SeatingPlace>)seatingOptionSuggested.Seats)
         {
             var formerRow = newVersionOfRows[updatedSeat.RowName];
             var newVersionOfRow = formerRow.Allocate(updatedSeat);
@@ -49,7 +49,7 @@ public class AuditoriumSeating : ValueType<AuditoriumSeating>
         return new object[] { new DictionaryByValue<string, Row>(_rows) };
     }
 
-    private AuditoriumSeating AllocateSeats(IEnumerable<Seat> updatedSeats)
+    private AuditoriumSeating AllocateSeats(IEnumerable<SeatingPlace> updatedSeats)
     {
         var newVersionOfRows = new Dictionary<string, Row>(_rows);
 
