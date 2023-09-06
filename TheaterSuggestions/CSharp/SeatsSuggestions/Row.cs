@@ -6,18 +6,18 @@ namespace SeatsSuggestions;
 
 public class Row : ValueType<Row>
 {
-    public Row(string name, List<SeatingPlace> seats)
+    public Row(string name, List<SeatingPlace> seatingPlaces)
     {
         Name = name;
-        Seats = seats;
+        SeatingPlaces = seatingPlaces;
     }
 
     public string Name { get; init; }
-    public List<SeatingPlace> Seats { get; init; }
+    public List<SeatingPlace> SeatingPlaces { get; init; }
 
     public Row AddSeat(SeatingPlace seatingPlace)
     {
-        return new Row(Name, new List<SeatingPlace>(Seats) { seatingPlace });
+        return new Row(Name, new List<SeatingPlace>(SeatingPlaces) { seatingPlace });
     }
 
     public SeatingOptionSuggested SuggestSeatingOption(SuggestionRequest suggestionRequest)
@@ -36,14 +36,14 @@ public class Row : ValueType<Row>
 
     private IEnumerable<SeatingPlace> SelectAvailableSeatsCompliantWith(PricingCategory pricingCategory)
     {
-        return Seats.Where(s => s.IsAvailable() && s.PricingCategory == pricingCategory);
+        return SeatingPlaces.Where(seatingPlace => seatingPlace.IsAvailable() && seatingPlace.PricingCategory == pricingCategory);
     }
 
     public Row Allocate(SeatingPlace seatingPlace)
     {
         var newVersionOfSeats = new List<SeatingPlace>();
 
-        foreach (var currentSeat in Seats)
+        foreach (var currentSeat in SeatingPlaces)
             if (currentSeat.SameSeatLocation(seatingPlace))
                 newVersionOfSeats.Add(new SeatingPlace(seatingPlace.RowName, seatingPlace.Number, seatingPlace.PricingCategory,
                     SeatAvailability.Allocated));
@@ -55,6 +55,6 @@ public class Row : ValueType<Row>
 
     protected override IEnumerable<object> GetAllAttributesToBeUsedForEquality()
     {
-        return new object[] { Name, new ListByValue<SeatingPlace>(Seats) };
+        return new object[] { Name, new ListByValue<SeatingPlace>(SeatingPlaces) };
     }
 }

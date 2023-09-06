@@ -24,7 +24,7 @@ public class AuditoriumSeatingShould
         Check.That(auditoriumSeatingSecondInstance).IsEqualTo(auditoriumSeatingFirstInstance);
 
         // Should not mutate existing instance 
-        var seat = auditoriumSeatingSecondInstance.Rows.Values.First().Seats.First().Allocate();
+        var seat = auditoriumSeatingSecondInstance.Rows.Values.First().SeatingPlaces.First().Allocate();
         Check.That(auditoriumSeatingSecondInstance).IsEqualTo(auditoriumSeatingFirstInstance);
     }
 }
