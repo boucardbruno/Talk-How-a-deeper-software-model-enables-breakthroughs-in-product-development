@@ -42,7 +42,7 @@ public class AuditoriumSeatingAdapter
                 var isReserved = reservedSeatsDto.ReservedSeats.Contains(seatDto.Name);
 
                 seats.Add(new SeatingPlace(rowName, number, pricingCategory,
-                    isReserved ? SeatAvailability.Reserved : SeatAvailability.Available));
+                    isReserved ? SeatingPlaceAvailability.Reserved : SeatingPlaceAvailability.Available));
             }
 
             rows[rowDto.Key] = new Row(rowDto.Key, seats);

@@ -9,8 +9,8 @@ public class SeatingPlaceShould
     [Test]
     public void Be_a_Value_Type()
     {
-        var firstInstance = new SeatingPlace("A", 1, PricingCategory.Second, SeatAvailability.Available);
-        var secondInstance = new SeatingPlace("A", 1, PricingCategory.Second, SeatAvailability.Available);
+        var firstInstance = new SeatingPlace("A", 1, PricingCategory.Second, SeatingPlaceAvailability.Available);
+        var secondInstance = new SeatingPlace("A", 1, PricingCategory.Second, SeatingPlaceAvailability.Available);
 
         // Two different instances with same values should be equals
         Check.That(secondInstance).IsEqualTo(firstInstance);

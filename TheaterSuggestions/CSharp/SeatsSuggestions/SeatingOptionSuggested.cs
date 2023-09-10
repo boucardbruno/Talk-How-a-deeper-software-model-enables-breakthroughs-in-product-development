@@ -14,7 +14,7 @@ public class SeatingOptionSuggested
     public List<SeatingPlace> Seats { get; } = new();
     public int PartyRequested { get; }
 
-    public void AddSeat(SeatingPlace seatingPlace)
+    public void AddSeatingPlace(SeatingPlace seatingPlace)
     {
         Seats.Add(seatingPlace);
     }

@@ -12,10 +12,10 @@ public class Row : ValueType<Row>
         SeatingPlaces = seatingPlaces;
     }
 
-    public string Name { get; init; }
-    public List<SeatingPlace> SeatingPlaces { get; init; }
+    public string Name { get; }
+    public List<SeatingPlace> SeatingPlaces { get; }
 
-    public Row AddSeat(SeatingPlace seatingPlace)
+    public Row AddSeatingPlace(SeatingPlace seatingPlace)
     {
         return new Row(Name, new List<SeatingPlace>(SeatingPlaces) { seatingPlace });
     }
@@ -24,9 +24,9 @@ public class Row : ValueType<Row>
     {
         var seatingOptionSuggested = new SeatingOptionSuggested(suggestionRequest);
 
-        foreach (var seat in SelectAvailableSeatsCompliantWith(suggestionRequest.PricingCategory))
+        foreach (var seatingPlace in SelectAvailableSeatingPlacesCompliantWith(suggestionRequest.PricingCategory))
         {
-            seatingOptionSuggested.AddSeat(seat);
+            seatingOptionSuggested.AddSeatingPlace(seatingPlace);
 
             if (seatingOptionSuggested.MatchExpectation()) return seatingOptionSuggested;
         }
@@ -34,7 +34,7 @@ public class Row : ValueType<Row>
         return new SeatingOptionNotAvailable(suggestionRequest);
     }
 
-    private IEnumerable<SeatingPlace> SelectAvailableSeatsCompliantWith(PricingCategory pricingCategory)
+    private IEnumerable<SeatingPlace> SelectAvailableSeatingPlacesCompliantWith(PricingCategory pricingCategory)
     {
         return SeatingPlaces.Where(seatingPlace => seatingPlace.IsAvailable() && seatingPlace.PricingCategory == pricingCategory);
     }
@@ -44,9 +44,9 @@ public class Row : ValueType<Row>
         var newVersionOfSeats = new List<SeatingPlace>();
 
         foreach (var currentSeat in SeatingPlaces)
-            if (currentSeat.SameSeatLocation(seatingPlace))
+            if (currentSeat.SameSeatingPlace(seatingPlace))
                 newVersionOfSeats.Add(new SeatingPlace(seatingPlace.RowName, seatingPlace.Number, seatingPlace.PricingCategory,
-                    SeatAvailability.Allocated));
+                    SeatingPlaceAvailability.Allocated));
             else
                 newVersionOfSeats.Add(currentSeat);
 
