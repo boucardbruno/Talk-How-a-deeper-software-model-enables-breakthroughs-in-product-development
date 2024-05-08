@@ -36,7 +36,7 @@ public class Row : ValueType<Row>
 
     private IEnumerable<SeatingPlace> SelectAvailableSeatingPlacesCompliantWith(PricingCategory pricingCategory)
     {
-        return SeatingPlaces.Where(seatingPlace => seatingPlace.IsAvailable() && seatingPlace.PricingCategory == pricingCategory);
+        return SeatingPlaces.Where(seatingPlace => seatingPlace.IsAvailable() && seatingPlace.MatchCategory(pricingCategory));
     }
 
     public Row Allocate(SeatingPlace seatingPlace)

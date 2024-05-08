@@ -45,4 +45,13 @@ public class SeatingPlace : ValueType<SeatingPlace>
     {
         return new object[] { RowName, Number, PricingCategory, SeatingPlaceAvailability };
     }
+
+    public bool MatchCategory(PricingCategory pricingCategory)
+    {
+        if (PricingCategory.Mixed == pricingCategory)
+        {
+            return true;
+        }
+        return this.PricingCategory == pricingCategory;
+    }
 }
