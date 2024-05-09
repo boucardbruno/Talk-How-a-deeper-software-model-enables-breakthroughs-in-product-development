@@ -1,7 +1,9 @@
 package com.baasie.SeatsSuggestions;
 
 import java.util.List;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode
 public class Row {
     private String name;
     private List<SeatingPlaces> seats;

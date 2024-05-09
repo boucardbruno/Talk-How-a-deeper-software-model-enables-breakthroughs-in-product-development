@@ -3,7 +3,9 @@ package com.baasie.SeatsSuggestions;
 import com.google.common.collect.ImmutableMap;
 
 import java.util.Map;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode
 public class AuditoriumSeating {
 
     private ImmutableMap<String, Row> rows;

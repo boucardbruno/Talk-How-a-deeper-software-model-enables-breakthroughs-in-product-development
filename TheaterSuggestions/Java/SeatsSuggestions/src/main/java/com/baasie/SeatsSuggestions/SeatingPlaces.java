@@ -1,7 +1,9 @@
 package com.baasie.SeatsSuggestions;
 
 import lombok.Getter;
+import lombok.EqualsAndHashCode;
 
+@EqualsAndHashCode
 public class SeatingPlaces {
 
     private String rowName;
