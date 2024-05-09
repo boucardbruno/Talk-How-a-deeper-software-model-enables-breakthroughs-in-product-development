@@ -9,7 +9,7 @@ import java.io.IOException;
 
 import static com.google.common.truth.Truth.assertThat;
 
-public class SeatsAllocatorTest {
+public class SeatingPlaceSuggestingMarkerTest {
 
     @Test
     public void should_return_SeatsNotAvailable_when_Auditorium_has_all_its_seats_already_reserved() throws IOException {
@@ -24,9 +24,9 @@ public class SeatsAllocatorTest {
         AuditoriumSeatingAdapter auditoriumLayoutAdapter =
                 new AuditoriumSeatingAdapter(new AuditoriumLayoutRepository(), new ReservationsProvider());
 
-        SeatsAllocator seatsAllocator = new SeatsAllocator(auditoriumLayoutAdapter);
+        SeatingPlaceSuggestingMaker seatingPlaceSuggestingMaker = new SeatingPlaceSuggestingMaker(auditoriumLayoutAdapter);
 
-        SuggestionsMade suggestionsMade = seatsAllocator.makeSuggestion(showId, partyRequested);
+        SuggestionsMade suggestionsMade = seatingPlaceSuggestingMaker.makeSuggestion(showId, partyRequested);
         assertThat(suggestionsMade.partyRequested()).isEqualTo(partyRequested);
         assertThat(suggestionsMade.showId()).isEqualTo(showId);
 
@@ -46,9 +46,9 @@ public class SeatsAllocatorTest {
         AuditoriumSeatingAdapter auditoriumLayoutAdapter =
                 new AuditoriumSeatingAdapter(new AuditoriumLayoutRepository(), new ReservationsProvider());
 
-        SeatsAllocator seatsAllocator = new SeatsAllocator(auditoriumLayoutAdapter);
+        SeatingPlaceSuggestingMaker seatingPlaceSuggestingMaker = new SeatingPlaceSuggestingMaker(auditoriumLayoutAdapter);
 
-        SuggestionsMade suggestionsMade = seatsAllocator.makeSuggestion(showId, partyRequested);
+        SuggestionsMade suggestionsMade = seatingPlaceSuggestingMaker.makeSuggestion(showId, partyRequested);
 
         assertThat(suggestionsMade.seatNames(PricingCategory.First)).containsExactly("A3");
     }
@@ -70,16 +70,13 @@ public class SeatsAllocatorTest {
         AuditoriumSeatingAdapter auditoriumLayoutAdapter =
                 new AuditoriumSeatingAdapter(new AuditoriumLayoutRepository(), new ReservationsProvider());
 
-        SeatsAllocator seatsAllocator = new SeatsAllocator(auditoriumLayoutAdapter);
+        SeatingPlaceSuggestingMaker seatingPlaceSuggestingMaker = new SeatingPlaceSuggestingMaker(auditoriumLayoutAdapter);
 
-        SuggestionsMade suggestionsMade = seatsAllocator.makeSuggestion(showId, partyRequested);
+        SuggestionsMade suggestionsMade = seatingPlaceSuggestingMaker.makeSuggestion(showId, partyRequested);
 
         assertThat(suggestionsMade.seatNames(PricingCategory.First)).containsExactly("A3", "A4", "A5");
         assertThat(suggestionsMade.seatNames(PricingCategory.Second)).containsExactly("A1", "A2", "A9");
         assertThat(suggestionsMade.seatNames(PricingCategory.Third)).containsExactly("E1", "E2", "E3");
-
-        // BUG!!! => return A6, A7, A8 instead of the expected A1, A2, A3
-        assertThat(suggestionsMade.seatNames(PricingCategory.Mixed)).containsExactly("A1", "A2", "A3");
     }
 
 }

@@ -17,7 +17,7 @@ public class Row {
 
     public SeatingOptionSuggested suggestSeatingOption(int partyRequested, PricingCategory pricingCategory) {
         for (SeatingPlaces seat : seats) {
-            if (seat.isAvailable() && seat.matchCategory(pricingCategory)) {
+            if (seat.isAvailable() && seat.pricingCategory() == pricingCategory) {
                 SeatingOptionSuggested seatingOptionSuggested = new SeatingOptionSuggested(partyRequested, pricingCategory);
                 seatingOptionSuggested.addSeat(seat);
 

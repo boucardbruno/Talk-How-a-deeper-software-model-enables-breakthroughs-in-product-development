@@ -2,12 +2,12 @@
 
 namespace SeatsSuggestions;
 
-public class SeatAllocator
+public class SeatingPlaceSuggestingMaker
 {
     private const int NumberOfSuggestionsPerPricingCategory = 3;
     private readonly AuditoriumSeatingAdapter _auditoriumSeatingAdapter;
 
-    public SeatAllocator(AuditoriumSeatingAdapter auditoriumSeatingAdapter)
+    public SeatingPlaceSuggestingMaker(AuditoriumSeatingAdapter auditoriumSeatingAdapter)
     {
         _auditoriumSeatingAdapter = auditoriumSeatingAdapter;
     }
@@ -21,7 +21,6 @@ public class SeatAllocator
         suggestionsMade.Add(GiveMeSuggestionsFor(auditoriumSeating, partyRequested, PricingCategory.First));
         suggestionsMade.Add(GiveMeSuggestionsFor(auditoriumSeating, partyRequested, PricingCategory.Second));
         suggestionsMade.Add(GiveMeSuggestionsFor(auditoriumSeating, partyRequested, PricingCategory.Third));
-        suggestionsMade.Add(GiveMeSuggestionsFor(auditoriumSeating, partyRequested, PricingCategory.Mixed));
 
         if (suggestionsMade.MatchExpectations()) return suggestionsMade;
 

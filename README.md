@@ -14,8 +14,8 @@ He is an advocate for multidisciplinary collaboration in open spaces. Using tech
 Besides daily work, he helps organize meetups for Behaviour Driven Development NL and Domain Driven Design Nederland.
 
 ### Bruno Boucard
-My long experience in IT has allowed me to design better collaborative approaches to create high-impact products.
+Bruno Boucard has extensive experience in IT, which has allowed him to design better collaborative approaches to create high-impact products.
 
-Like the hummingbird, everyone does their part to create software that will better impact its users. By leveraging a domain-driven design approach, I facilitate more transparent communication between stakeholders and software creators through collaborative modeling and deep democracy, decoding complexities, resolving conflicts, and ensuring that software remains agile in the face of business demands.
+Like the hummingbird, everyone does their part to create software that will better impact its users. By leveraging a domain-driven design approach, Bruno facilitates more transparent communication between stakeholders and software creators through collaborative modeling and deep democracy, decoding complexities, resolving conflicts, and ensuring that software remains agile in the face of business demands.
 
-As a consultant for OCTO Technology, technical lead and software architect, and agile and technical coach, I catalyze organizations and teams toward the design and construction of sustainable and clean software architectures. I host the BDD Paris Meetup and am very involved in the Domain-Driven Design community.
+As a consultant for OCTO Technology, a technical manager and software architect, and an agile and technical coach, Bruno catalyzes organizations and teams to design and construct sustainable and clean software architectures. He hosts the BDD Paris Meetup and is in the domain-driven design community.

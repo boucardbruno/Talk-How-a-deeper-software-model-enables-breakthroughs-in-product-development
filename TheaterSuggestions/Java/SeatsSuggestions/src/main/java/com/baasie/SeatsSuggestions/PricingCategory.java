@@ -6,8 +6,7 @@ import java.util.Map;
 public enum PricingCategory {
     First(1),
     Second(2),
-    Third(3),
-    Mixed(4);
+    Third(3);
 
     private int value;
     private static Map map = new HashMap();

@@ -1,9 +1,12 @@
 package com.baasie.SeatsSuggestions;
 
+import lombok.Getter;
+
 public class SeatingPlaces {
 
     private String rowName;
     private int number;
+    @Getter
     private PricingCategory pricingCategory;
     private SeatAvailability seatAvailability;
 
@@ -18,13 +21,6 @@ public class SeatingPlaces {
         return seatAvailability == SeatAvailability.Available;
     }
 
-    public boolean matchCategory(PricingCategory pricingCategory) {
-        if (pricingCategory == PricingCategory.Mixed) {
-            return true;
-        }
-
-        return this.pricingCategory == pricingCategory;
-    }
 
     public void allocate() {
         if (seatAvailability == SeatAvailability.Available) {
